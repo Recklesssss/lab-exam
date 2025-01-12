@@ -9,12 +9,19 @@ def draw_nested_triangles():
     # Blue color
     blue = (0, 0, 255)
     
+    # Outer triangle
     outer_triangle = [(250, 50), (100, 400), (400, 400)]
- 
-    flipped_inner_triangle = [(250, 350), (175, 150), (325, 150)]
 
-    pygame.draw.polygon(screen, blue, outer_triangle)
-    pygame.draw.polygon(screen, (255, 255, 255), flipped_inner_triangle)
+    # Flipped inner triangle vertices adjusted to touch the outer triangle
+    inner_triangle = [
+        (250, 400),  # Bottom vertex touches the base of the outer triangle
+        (175, 225),  # Left vertex touches the left edge of the outer triangle
+        (325, 225)   # Right vertex touches the right edge of the outer triangle
+    ]
+
+    # Draw the triangles
+    pygame.draw.polygon(screen, blue, outer_triangle)  # Outer triangle
+    pygame.draw.polygon(screen, (255, 255, 255), inner_triangle)  # Inner triangle
 
     pygame.display.flip()
 
